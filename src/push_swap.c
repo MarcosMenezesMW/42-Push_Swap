@@ -5,75 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 19:49:42 by mameneze          #+#    #+#             */
-/*   Updated: 2021/10/07 21:35:54 by mameneze         ###   ########.fr       */
+/*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
+/*   Updated: 2021/10/16 18:58:53 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
-t_pile	*init_stack(int argc, char *argv[])
+void	print_stack(t_pile stack, char c)
 {
-	int		i;
-	t_pile	*stack;
-	t_pile	*node;
+	int	i;
 
-	i = 1;
-	stack = malloc(sizeof(t_pile));
-	stack->number = ft_atoi(argv[1]);
-	stack->next = NULL;
-	while (++i < argc)
+	i = 0;
+	write (STDOUT_FILENO, "Stack ", 7);
+	write (STDOUT_FILENO, &c, 1);
+	write(STDOUT_FILENO, "\n", 1);
+	while (i < stack.size)
 	{
-		node = create_node(ft_atoi(argv[i]));
-		add_node_back(&stack, &node);
+		ft_putnbr_fd(stack.number[i], STDOUT_FILENO);
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
 	}
-	return (stack);
-}
-
-void	print_stack(t_pile *stack, char c)
-{
-	printf("\nStack_%c:\n", c);
-	while (stack != NULL)
-	{
-		printf("%d\n", stack->number);
-		stack = stack->next;
-	}
+	write(STDOUT_FILENO, "\n", 1);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_pile	*stack_a;
-	t_pile	*stack_b;
+	t_pile	stack_a;
+	t_pile	stack_b;
 
-	stack_b = NULL;
-	stack_a = init_stack(argc, argv);
-	print_stack(stack_a, 'A');
-	printf("\nSwap A\n");
-	swap_a(&stack_a, &stack_a->next);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\nPush b 1:");
-	push_b(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\nPush b 2:");
-	push_b(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\nPush b 3:");
-	push_b(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\nPush a 1:");
-	push_b(&stack_b, &stack_a);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\nPush a 2:");
-	push_b(&stack_b, &stack_a);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\nPush a 3:");
-	push_b(&stack_b, &stack_a);
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
+	if (argc < 2)
+		write(STDERR_FILENO, ERRPARAM, 21);
+	init_stack(&stack_a, &stack_b, argc);
+	fill_stack(&stack_a, &stack_b, argv, argc);
+	free(stack_a.number);
+	free(stack_b.number);
+	return (0);
 }

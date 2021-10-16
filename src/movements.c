@@ -5,60 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 00:24:48 by mameneze          #+#    #+#             */
-/*   Updated: 2021/10/07 21:22:35 by mameneze         ###   ########.fr       */
+/*   Created: 2021/10/16 16:53:34 by mameneze          #+#    #+#             */
+/*   Updated: 2021/10/16 18:22:36 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	create_stack_b(t_pile **head, t_pile **b)
+void	swap(t_pile *stack_a)
 {
-	t_pile	*tmp;
-	t_pile	*tmpb;
+	int	tmp;
 
-	tmpb = malloc(sizeof(t_pile));
-	tmpb->next = NULL;
-	*b = tmpb;
-	tmp = *head;
-	tmpb = *b;
-	*head = tmp->next;
-	tmp->next = tmpb->next;
-	*b = tmp;
-	free(tmpb);
-}
-
-void	swap_a(t_pile **n1, t_pile **n2)
-{
-	t_pile	*tmp;
-	t_pile	*current;
-	t_pile	*next;
-
-	current = *n1;
-	next = *n2;
-	*n1 = next;
-	*n2 = current;
-	tmp = current->next;
-	current->next = next->next;
-	next->next = tmp;
-}
-
-void	push_b(t_pile **head, t_pile **b)
-{
-	t_pile	*tmp;
-	t_pile	*tmpb;
-
-	if (*head != NULL)
+	if (stack_a->size > 1)
 	{
-		if (*b == NULL)
-			create_stack_b(*(&head), *(&b));
-		else
-		{
-			tmpb = *b;
-			tmp = *head;
-			*head = tmp->next;
-			tmp->next = tmpb;
-			*b = tmp;
-		}
+		tmp = stack_a->number[0];
+		stack_a->number[0] = stack_a->number[1];
+		stack_a->number[1] = tmp;
 	}
+}
+
+void	push(t_pile *stack_a, t_pile *stack_b)
+{
+	int	i;
+	int	j;
+
+	stack_b->size++;
+	i = stack_b->size - 1;
+	j = 0;
+	if (i == 0)
+		stack_b->number[i] = stack_a->number[j];
+	else
+	{
+		while (i > 0)
+		{
+			stack_b->number[i] = stack_b->number[i - 1];
+			i--;
+		}
+		stack_b->number[0] = stack_a->number[0];
+	}
+	while (j < stack_a->size - 1)
+	{
+		stack_a->number[j] = stack_a->number[j + 1];
+		j++;
+	}
+	stack_a->size -= 1;
+}
+
+void	rotate(t_pile *stack)
+{
+	int	tmp;
+	int	i;
+
+	i = stack->size - 1;
+	tmp = stack->number[i];
+	while (i > 0)
+	{
+		stack->number[i] = stack->number[i - 1];
+		i--;
+	}
+	stack->number[i] = tmp;
+}
+
+void	reverse_rotate(t_pile *stack)
+{
+	int	tmp;
+	int	i;
+
+	i = 0;
+	tmp = stack->number[0];
+	while (i < stack->size - 1)
+	{
+		stack->number[i] = stack->number[i + 1];
+		i++;
+	}
+	stack->number[i] = tmp;
 }

@@ -5,9 +5,9 @@ SRC_PATH	=	./src
 LIBFT_PATH	=	./libft
 OBJ_PATH	=	./obj
 
-SRC			=	init_stack.c \
-				list_utils.c \
+SRC			=	stack_init.c \
 				movements.c \
+				sort.c \
 				push_swap.c
 
 CC			=	clang
