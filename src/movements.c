@@ -48,7 +48,7 @@ void	push(t_pile *stack_a, t_pile *stack_b)
 		stack_a->number[j] = stack_a->number[j + 1];
 		j++;
 	}
-	stack_a->size -= 1;
+	stack_a->size--;
 }
 
 void	rotate(t_pile *stack)

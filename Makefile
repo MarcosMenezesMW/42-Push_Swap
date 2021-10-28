@@ -7,6 +7,8 @@ OBJ_PATH	=	./obj
 
 SRC			=	stack_init.c \
 				movements.c \
+				move_a.c \
+				move_b.c \
 				sort.c \
 				push_swap.c
 

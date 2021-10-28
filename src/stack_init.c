@@ -12,18 +12,17 @@
 
 #include "../push_swap.h"
 
-static int	check_args(char c, t_pile *stack_a, t_pile *stack_b)
+static int	check_args(char c, t_pile *stack_a)
 {
 	if (!ft_isdigit(c) && c != '-')
 	{
 		free(stack_a->number);
-		free(stack_b->number);
-		return (write(STDERR_FILENO, ERRPARAM, 21), 0);
+		return (write(STDERR_FILENO, ERR, 7), 0);
 	}
 	return (1);
 }
 
-static int	check_duplicates(char c, t_pile *stack_a, t_pile *stack_b)
+static void	check_duplicates(char c, t_pile *stack_a)
 {
 	int	i;
 
@@ -33,12 +32,11 @@ static int	check_duplicates(char c, t_pile *stack_a, t_pile *stack_b)
 		if (stack_a->number[i] == c)
 		{
 			free(stack_a->number);
-			free(stack_b->number);
-			return (write(STDERR_FILENO, ERRDUP, 21), 0);
+			write(STDERR_FILENO, ERR, 7);
+			exit(1);
 		}
 		i++;
 	}
-	return (1);
 }
 
 void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
@@ -48,11 +46,10 @@ void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
 	i = 0;
 	while (i + 1 < argc)
 	{
-		if (!check_args(*argv[i + 1], stack_a, stack_b))
+		if (!check_args(*argv[i + 1], stack_a))
 			exit(0);
 		stack_a->number[i] = ft_atoi(argv[i + 1]);
-		if (!check_duplicates(stack_a->number[i], stack_a, stack_b))
-			exit(0);
+		check_duplicates(stack_a->number[i], stack_a);
 		stack_a->size++;
 		i++;
 	}
