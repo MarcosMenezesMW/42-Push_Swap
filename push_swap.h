@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 19:01:16 by mameneze          #+#    #+#             */
-/*   Updated: 2021/10/28 18:22:27 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/06 13:30:39 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # define ERR "Error\n"
+# define MAX_INT 2147483647
+# define MIN_INT -2147483647
 
 typedef struct s_pile{
 	int	*number;

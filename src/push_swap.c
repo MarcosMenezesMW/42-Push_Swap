@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/10/28 18:25:58 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/07 12:18:00 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ int	main(int argc, char *argv[])
 	fill_stack(&stack_a, &stack_b, argv, argc);
 	if (stack_a.size < 1)
 		write(STDERR_FILENO, ERR, 7);
-	if (stack_a.size == 3)
-		small_sort(&stack_a);
 	if (stack_a.size == 2)
 		if (stack_a.number[0] > stack_a.number[1])
 			sa(&stack_a);
+	if (stack_a.size == 3)
+		small_sort(&stack_a);
+
 	free(stack_a.number);
 	free(stack_b.number);
 	return (0);

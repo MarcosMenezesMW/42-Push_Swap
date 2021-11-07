@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mameneze <mameneze@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:49:26 by mameneze          #+#    #+#             */
-/*   Updated: 2021/10/16 17:45:20 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/06 13:24:27 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
 	{
 		if (!check_args(*argv[i + 1], stack_a))
 			exit(0);
+		if (ft_atol(argv[i + 1]) > MAX_INT 
+			|| ft_atol(argv[i + 1]) < MIN_INT)
+		{
+			write(STDERR_FILENO, ERR, 7);
+			exit(0);
+		}
 		stack_a->number[i] = ft_atoi(argv[i + 1]);
 		check_duplicates(stack_a->number[i], stack_a);
 		stack_a->size++;
