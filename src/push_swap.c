@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/08 00:42:08 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/08 04:36:23 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	main(int argc, char *argv[])
 		return (free(stack_a.number), free(stack_b.number), exit(0), 0);
 	if (!is_sorted(&stack_a))
 		check_sort(&stack_a, &stack_b);
-	// print_stack(stack_a, 'A');
-	// print_stack(stack_b, 'B');
+	// 
+	
 	free(stack_a.number);
 	free(stack_b.number);
 	return (0);
