@@ -7,9 +7,10 @@ OBJ_PATH	=	./obj
 
 SRC			=	stack_init.c \
 				movements.c \
-				move_a.c \
-				move_b.c \
-				sort.c \
+				move_write.c \
+				small_sort.c \
+				quick_sort.c \
+				sort_utils.c \
 				push_swap.c
 
 CC			=	clang

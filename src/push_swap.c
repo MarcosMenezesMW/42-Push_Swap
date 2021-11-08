@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mameneze <mameneze@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/07 12:18:00 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/08 00:42:08 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,38 @@ void	print_stack(t_pile stack, char c)
 	write(STDOUT_FILENO, "\n", 1);
 }
 
+static void	check_sort(t_pile *stack_a, t_pile *stack_b)
+{
+	if (stack_a->size < 1)
+		write(STDERR_FILENO, ERR, 7);
+	if (stack_a->size == 2)
+		smallest_sort(stack_a, 'a');
+	if (stack_a->size == 3)
+		small_sort(stack_a, 'a');
+	if (stack_a->size >= 5)
+	{
+		quick_sort(stack_a, stack_b);
+		if (is_sorted(stack_b))
+			swap_arg(stack_b, 'b');
+		small_sort(stack_a, 'a');
+		while (stack_b->size > 0)
+			push_arg(stack_a, stack_b, 'b');
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_pile	stack_a;
 	t_pile	stack_b;
 
-	if (argc < 2)
-	{
-		write(STDERR_FILENO, ERR, 7);
-		exit(0);
-	}
 	init_stack(&stack_a, &stack_b, argc);
 	fill_stack(&stack_a, &stack_b, argv, argc);
-	if (stack_a.size < 1)
-		write(STDERR_FILENO, ERR, 7);
-	if (stack_a.size == 2)
-		if (stack_a.number[0] > stack_a.number[1])
-			sa(&stack_a);
-	if (stack_a.size == 3)
-		small_sort(&stack_a);
-
+	if (stack_a.size == 0 || stack_a.size == 1)
+		return (free(stack_a.number), free(stack_b.number), exit(0), 0);
+	if (!is_sorted(&stack_a))
+		check_sort(&stack_a, &stack_b);
+	// print_stack(stack_a, 'A');
+	// print_stack(stack_b, 'B');
 	free(stack_a.number);
 	free(stack_b.number);
 	return (0);
