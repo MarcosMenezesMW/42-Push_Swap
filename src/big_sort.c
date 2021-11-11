@@ -6,13 +6,13 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 00:32:37 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/11 00:28:10 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/11 02:21:55 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void swap_array(t_pile *stack_a, int *pos_array)
+static void	swap_array(t_pile *stack_a, int *pos_array)
 {
 	int	i;
 
@@ -24,11 +24,11 @@ static void swap_array(t_pile *stack_a, int *pos_array)
 	}	
 }
 
-void	get_pos(t_pile* stack_a)
+void	get_pos(t_pile *stack_a)
 {
 	int	*pos;
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	pos = malloc(sizeof(int) * stack_a->size);
@@ -57,13 +57,14 @@ void	bit_ops(t_pile *stack_a, t_pile *stack_b, int pos, int size)
 	while (j < size)
 	{
 		top = stack_a->number[0];
-		if (((top >> pos)&1) == 1)
+		if (((top >> pos) & 1) == 1)
 			rotate_arg(stack_a, 'a');
 		else
 			push_arg(stack_b, stack_a, 'b');
 		j++;
 	}
 }
+
 void	big_sort(t_pile *stack_a, t_pile *stack_b)
 {
 	int	i;

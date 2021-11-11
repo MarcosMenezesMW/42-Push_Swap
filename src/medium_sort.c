@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 00:18:20 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/11 01:56:01 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/11 02:22:29 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	medium_sort(t_pile *stack_a, t_pile *stack_b)
 	i = 0;
 	size = stack_a->size;
 	get_pos(stack_a);
-	while(i < size)
+	while (i < size)
 	{
 		if (stack_a->number[0] >= 3)
 			push_arg(stack_b, stack_a, 'b');

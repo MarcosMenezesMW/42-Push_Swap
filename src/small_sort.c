@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 18:48:38 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/08 00:33:04 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/11 02:20:40 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	small_sort(t_pile *stack, char c)
 		rev_rotate_arg(stack, c);
 		swap_arg(stack, c);
 	}
-	else 
+	else
 		rotate_arg(stack, 'a');
 }
