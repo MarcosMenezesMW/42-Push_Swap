@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_write.c                                       :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/28 18:14:04 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/07 21:37:14 by mameneze         ###   ########.fr       */
+/*   Created: 2021/11/11 00:55:39 by mameneze          #+#    #+#             */
+/*   Updated: 2021/11/11 00:57:09 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	swap_arg(t_pile *stack, char c)
+static void	reverse_rotate(t_pile *stack)
 {
-	swap(stack);
-	write(STDOUT_FILENO, "s", 1);
-	write(STDOUT_FILENO, &c, 1);
-	write(STDOUT_FILENO, "\n", 1);
-}
+	int	tmp;
+	int	i;
 
-void	push_arg(t_pile *stack_a, t_pile *stack_b, char c)
-{
-	if (push(stack_a, stack_b) != 0)
+	i = stack->size - 1;
+	tmp = stack->number[i];
+	while (i > 0)
 	{
-		write(STDOUT_FILENO, "p", 1);
-		write(STDOUT_FILENO, &c, 1);
-		write(STDOUT_FILENO, "\n", 1);
+		stack->number[i] = stack->number[i - 1];
+		i--;
 	}
-}
-
-void	rotate_arg(t_pile *stack, char c)
-{
-	rotate(stack);
-	write(STDOUT_FILENO, "r", 1);
-	write(STDOUT_FILENO, &c, 1);
-	write(STDOUT_FILENO, "\n", 1);
+	stack->number[i] = tmp;
 }
 
 void	rev_rotate_arg(t_pile *stack, char c)
@@ -44,4 +33,11 @@ void	rev_rotate_arg(t_pile *stack, char c)
 	write(STDOUT_FILENO, "rr", 2);
 	write(STDOUT_FILENO, &c, 1);
 	write(STDOUT_FILENO, "\n", 1);
+}
+
+void	rrr(t_pile *stack_a, t_pile *stack_b)
+{
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
+	write(STDOUT_FILENO, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/08 04:36:23 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/11 01:56:22 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,10 @@ static void	check_sort(t_pile *stack_a, t_pile *stack_b)
 		smallest_sort(stack_a, 'a');
 	if (stack_a->size == 3)
 		small_sort(stack_a, 'a');
-	if (stack_a->size >= 5)
-	{
-		quick_sort(stack_a, stack_b);
-		if (is_sorted(stack_b))
-			swap_arg(stack_b, 'b');
-		small_sort(stack_a, 'a');
-		while (stack_b->size > 0)
-			push_arg(stack_a, stack_b, 'b');
-	}
+	if (stack_a->size == 5)
+		medium_sort(stack_a, stack_b);
+	if (stack_a->size > 5)
+		big_sort(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])
@@ -60,8 +55,8 @@ int	main(int argc, char *argv[])
 		return (free(stack_a.number), free(stack_b.number), exit(0), 0);
 	if (!is_sorted(&stack_a))
 		check_sort(&stack_a, &stack_b);
-	// 
-	
+	// print_stack(stack_a, 'A');
+	// print_stack(stack_b, 'B');
 	free(stack_a.number);
 	free(stack_b.number);
 	return (0);

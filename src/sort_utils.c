@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:04:28 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/08 00:37:36 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/10 20:25:29 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,4 @@ int	check_med(t_pile *stack)
 	}
 	med = high / 2;
 	return (med);
-}
-
-int	check_below(t_pile *stack)
-{
-	int	i;
-	int	below;
-	int	med;
-
-	i = 0;
-	below = 0;
-	med = check_med(stack);
-	while (i < stack->size)
-	{
-		if (stack->number[i] <= med)
-			below++;
-		i++;
-	}
-	return (below);
 }

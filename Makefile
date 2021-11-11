@@ -6,10 +6,13 @@ LIBFT_PATH	=	./libft
 OBJ_PATH	=	./obj
 
 SRC			=	stack_init.c \
-				movements.c \
-				move_write.c \
+				push.c \
+				swap.c \
+				rotate.c \
+				reverse_rotate.c \
 				small_sort.c \
-				quick_sort.c \
+				medium_sort.c \
+				big_sort.c \
 				sort_utils.c \
 				push_swap.c
 

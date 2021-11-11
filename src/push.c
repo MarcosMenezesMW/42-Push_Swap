@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 16:53:34 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/07 21:30:25 by mameneze         ###   ########.fr       */
+/*   Created: 2021/11/11 00:57:35 by mameneze          #+#    #+#             */
+/*   Updated: 2021/11/11 01:01:54 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	swap(t_pile *stack)
-{
-	int	tmp;
-
-	if (stack->size > 1)
-	{
-		tmp = stack->number[0];
-		stack->number[0] = stack->number[1];
-		stack->number[1] = tmp;
-	}
-}
 
 static void	push_operations(t_pile *stack_a, t_pile *stack_b, int i, int j)
 {
@@ -44,7 +32,7 @@ static void	push_operations(t_pile *stack_a, t_pile *stack_b, int i, int j)
 	}
 }
 
-int	push(t_pile *stack_b, t_pile *stack_a)
+static int	push(t_pile *stack_b, t_pile *stack_a)
 {
 	int	i;
 	int	j;
@@ -60,32 +48,12 @@ int	push(t_pile *stack_b, t_pile *stack_a)
 	return (0);
 }
 
-void	reverse_rotate(t_pile *stack)
+void	push_arg(t_pile *stack_a, t_pile *stack_b, char c)
 {
-	int	tmp;
-	int	i;
-
-	i = stack->size - 1;
-	tmp = stack->number[i];
-	while (i > 0)
+	if (push(stack_a, stack_b) != 0)
 	{
-		stack->number[i] = stack->number[i - 1];
-		i--;
+		write(STDOUT_FILENO, "p", 1);
+		write(STDOUT_FILENO, &c, 1);
+		write(STDOUT_FILENO, "\n", 1);
 	}
-	stack->number[i] = tmp;
-}
-
-void	rotate(t_pile *stack)
-{
-	int	tmp;
-	int	i;
-
-	i = 0;
-	tmp = stack->number[0];
-	while (i < stack->size - 1)
-	{
-		stack->number[i] = stack->number[i + 1];
-		i++;
-	}
-	stack->number[i] = tmp;
 }
