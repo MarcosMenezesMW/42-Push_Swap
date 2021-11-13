@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/11 02:50:09 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/12 02:29:55 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	check_sort(t_pile *stack_a, t_pile *stack_b)
 		smallest_sort(stack_a, 'a');
 	if (stack_a->size == 3)
 		small_sort(stack_a, 'a');
-	if (stack_a->size == 5)
+	if (stack_a->size == 5 || stack_a->size == 4)
 		medium_sort(stack_a, stack_b);
 	if (stack_a->size > 5)
 		big_sort(stack_a, stack_b);
@@ -49,6 +49,8 @@ int	main(int argc, char *argv[])
 	t_pile	stack_a;
 	t_pile	stack_b;
 
+	if (argc == 1)
+		exit(0);
 	init_stack(&stack_a, &stack_b, argc);
 	fill_stack(&stack_a, &stack_b, argv, argc);
 	if (stack_a.size == 0 || stack_a.size == 1)

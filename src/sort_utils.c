@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:04:28 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/10 20:25:29 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/12 01:08:02 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,4 @@ int	check_higher_pos(t_pile *stack)
 		i++;
 	}
 	return (pos);
-}
-
-int	check_med(t_pile *stack)
-{
-	int	high;
-	int	med;
-	int	i;
-
-	high = 0;
-	i = 0;
-	while (i < stack->size)
-	{
-		if (stack->number[i] > high)
-			high = stack->number[i];
-		i++;
-	}
-	med = high / 2;
-	return (med);
 }

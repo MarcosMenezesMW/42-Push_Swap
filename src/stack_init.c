@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:49:26 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/11 02:49:59 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/12 01:06:26 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,23 @@ static int	check_args(char c, t_pile *stack_a)
 static void	check_duplicates(char c, t_pile *stack_a)
 {
 	int	i;
+	int	size;
+	int	check;
 
+	size = stack_a->size;
 	i = 0;
-	while (i < stack_a->size)
+	check = 0;
+	while (i < size)
 	{
 		if (stack_a->number[i] == c)
-		{
-			free(stack_a->number);
-			write(STDERR_FILENO, ERR, 7);
-			exit(1);
-		}
+			check++;
 		i++;
+	}
+	if (check > 1)
+	{
+		free(stack_a->number);
+		write(STDERR_FILENO, ERR, 7);
+		exit(1);
 	}
 }
 
@@ -61,8 +67,8 @@ void	string_args(t_pile *stack_a, t_pile *stack_b, char *argv[])
 			exit(0);
 		}
 		stack_a->number[j] = ft_atoi(string[j]);
-		check_duplicates(stack_a->number[j], stack_a);
 		stack_a->size++;
+		check_duplicates(stack_a->number[j], stack_a);
 		j++;
 	}
 	stack_b->number = malloc((stack_a->size) * sizeof(int));
@@ -86,8 +92,8 @@ void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
 				exit(0);
 			}
 			stack_a->number[i] = ft_atoi(argv[i + 1]);
-			check_duplicates(stack_a->number[i], stack_a);
 			stack_a->size++;
+			check_duplicates(stack_a->number[i], stack_a);
 			i++;
 		}
 		stack_b->number = malloc((stack_a->size) * sizeof(int));
