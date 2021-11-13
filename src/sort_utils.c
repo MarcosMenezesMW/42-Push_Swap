@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:04:28 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/12 01:08:02 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:13:40 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,24 @@ int	check_higher_pos(t_pile *stack)
 		i++;
 	}
 	return (pos);
+}
+
+int	count_string_args(char **string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i] != NULL)
+			i++;
+	return (i);
+}
+
+void	free_aux_string(char **string, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i <= size)
+		free(string[i++]);
+	free(string);
 }

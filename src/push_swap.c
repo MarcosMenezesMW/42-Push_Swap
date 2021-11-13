@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/12 02:29:55 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:40:48 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		exit(0);
-	init_stack(&stack_a, &stack_b, argc);
+	init_stack(&stack_a, &stack_b, argc, argv);
 	fill_stack(&stack_a, &stack_b, argv, argc);
 	if (stack_a.size == 0 || stack_a.size == 1)
 		return (free(stack_a.number), free(stack_b.number), exit(0), 0);

@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 00:32:37 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/11 02:21:55 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:45:32 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	get_pos(t_pile *stack_a)
 	free(pos);
 }
 
-void	bit_ops(t_pile *stack_a, t_pile *stack_b, int pos, int size)
+static void	bit_ops(t_pile *stack_a, t_pile *stack_b, int pos, int size)
 {
 	int	j;
 	int	top;

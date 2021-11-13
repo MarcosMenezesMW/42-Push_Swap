@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:49:26 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/12 01:06:26 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/13 19:33:21 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,19 @@ static void	check_duplicates(char c, t_pile *stack_a)
 	}
 }
 
-void	string_args(t_pile *stack_a, t_pile *stack_b, char *argv[])
+static int	string_args(t_pile *stack_a, t_pile *stack_b, char *argv[])
 {
 	char	**string;
 	int		i;
 	int		j;
 
-	i = 0;
 	j = 0;
 	string = ft_split(argv[1], ' ');
-	while (string[i] != NULL)
-		i++;
+	i = count_string_args(string);
 	while (j < i)
 	{
 		if (!check_args(*string[j], stack_a))
-			exit(0);
+			return (free_aux_string(string, i), exit(0), 0);
 		if (ft_atol(string[j]) > MAX_INT
 			|| ft_atol(string[j]) < MIN_INT)
 		{
@@ -71,7 +69,8 @@ void	string_args(t_pile *stack_a, t_pile *stack_b, char *argv[])
 		check_duplicates(stack_a->number[j], stack_a);
 		j++;
 	}
-	stack_b->number = malloc((stack_a->size) * sizeof(int));
+	free_aux_string(string, i);
+	return (stack_b->number = malloc((stack_a->size) * sizeof(int)), 0);
 }
 
 void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
@@ -102,9 +101,22 @@ void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
 		string_args(stack_a, stack_b, argv);
 }
 
-void	init_stack(t_pile *stack_a, t_pile *stack_b, int argc)
+void	init_stack(t_pile *stack_a, t_pile *stack_b, int argc, char *argv[])
 {
-	stack_a->number = malloc((argc - 1) * sizeof(int));
+	int		i;
+	int		j;
+	char	**string;
+
+	j = 0;
+	if (argc != 2)
+		stack_a->number = malloc((argc - 1) * sizeof(int));
+	else
+	{
+		string = ft_split(argv[1], ' ');
+		i = count_string_args(string);
+		stack_a->number = malloc(i * sizeof(int));
+		free_aux_string(string, i);
+	}
 	stack_a->size = 0;
 	stack_b->size = 0;
 }
