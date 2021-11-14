@@ -6,29 +6,11 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:03:58 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/13 18:40:48 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/14 23:44:58 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
-
-void	print_stack(t_pile stack, char c)
-{
-	int	i;
-
-	i = 0;
-	write (STDOUT_FILENO, "Stack ", 7);
-	write (STDOUT_FILENO, &c, 1);
-	write(STDOUT_FILENO, "\n", 1);
-	while (i < stack.size)
-	{
-		ft_putnbr_fd(stack.number[i], STDOUT_FILENO);
-		write(STDOUT_FILENO, " ", 1);
-		i++;
-	}
-	write(STDOUT_FILENO, "\n", 1);
-}
 
 static void	check_sort(t_pile *stack_a, t_pile *stack_b)
 {
