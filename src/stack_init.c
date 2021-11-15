@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:49:26 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/15 19:07:00 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:08:58 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	fill_stack(t_pile *stack_a, t_pile *stack_b, char **argv, int argc)
 	{
 		while (i + 1 < argc)
 		{
-			printf("STRING %d: %s\n", i, argv[i + 1]);
 			if (!check_args(argv[i + 1], stack_a))
 				exit(0);
 			if (ft_atol(argv[i + 1]) > MAX_INT
