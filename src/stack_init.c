@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:49:26 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/15 19:04:29 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:07:00 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	check_args(char *c, t_pile *stack_a)
 {
-	printf("CHAR: %s\n", c);
 	int	i;
 	int	size;
 	i = 0;
@@ -65,7 +64,6 @@ static int	string_args(t_pile *stack_a, t_pile *stack_b, char *argv[])
 	i = count_string_args(string);
 	while (j < i)
 	{
-		printf("STRING %d: %s\n", j, string[j]);
 		if (!check_args(string[j], stack_a))
 			return (free_aux_string(string, i), exit(0), 0);
 		if (ft_atol(string[j]) > MAX_INT
