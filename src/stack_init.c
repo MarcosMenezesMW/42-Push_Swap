@@ -6,7 +6,7 @@
 /*   By: mameneze <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:49:26 by mameneze          #+#    #+#             */
-/*   Updated: 2021/11/15 19:08:58 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:23:34 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ static int	check_args(char *c, t_pile *stack_a)
 {
 	int	i;
 	int	size;
+
 	i = 0;
 	size = ft_strlen(c);
 	while (i < size)
 	{
-		if (!ft_isdigit(c[i]) && c[i] != '-')
+		if ((!ft_isdigit(c[i]) && c[i] != '-') || (i > 0 && c[i] == '-')
+			|| (c[0] == '-' && size == 1))
 		{
 			free(stack_a->number);
 			return (write(STDERR_FILENO, ERR, 7), 0);
